@@ -1,0 +1,188 @@
+# ============================================================
+#  DreamWhitelist - players only see and use the commands listed here
+# ============================================================
+# Every command NOT in a player's groups is:
+#   - hidden from their tab list (they can't see it exists)
+#   - blocked when typed, with the "no-such-command" message below
+#   - namespaced forms (minecraft:tp, essentials:fly) are hidden too
+#
+# Groups:
+#   "default" applies to EVERY player.
+#   Any other group applies to players with  dreamwhitelist.group.<name>
+#   (e.g. dreamwhitelist.group.staff). A player gets every group they have, added together.
+#   dreamwhitelist.bypass (ops) sees and uses everything.
+#
+# Writing commands:
+#   - without the slash: "home", not "/home"
+#   - aliases come along automatically: "home" also allows "homes" (see include-aliases)
+#   - "dreamlb_*" = every command starting with dreamlb_
+#   - a namespaced one only when written out in full: "minecraft:me"
+#
+# blocked-subcommands: block one part of an allowed command, e.g. "pv admin" or "team disband".
+#   Blocked when typed and removed from tab-complete. Aliases of the command are covered too.
+#
+# After editing: /dwl reload   (or /dwl add <group> <command> in game)
+
+settings:
+  # true: "home" in a list also allows /homes (same command, other name)
+  include-aliases: true
+  # hide /plugin:command forms unless they are written out in a list
+  hide-namespaced: true
+  # also show the no-such-command message (instead of Minecraft's red text)
+  # for commands that really don't exist - for everyone, ops included
+  replace-unknown-command: true
+
+messages:
+  # Shadow under every message. "#000000" = black, "#00000080" = half see-through, "none" = off
+  text-shadow: "#000000"
+  # MiniMessage. <icon:item_name|fallback> = that item's texture inline (1.21.9+ client, Paper/Folia);
+  #   the part after | is shown on older clients / Spigot.
+  #   Other atlas: <icon:minecraft:gui|icon/info|i>
+  prefix: "<icon:nether_star|★> <#FFD23F><bold>TARAASHMC</bold> <dark_gray>»</dark_gray> "
+  no-such-command: "{prefix}<#FF5E5E>No such command."
+  blocked-subcommand: "{prefix}<#FF5E5E>No such command."
+  # Plain Spigot has no MiniMessage - it gets these (& colour codes)
+  legacy-no-such-command: "&e&lTARAASHMC &8» &cNo such command."
+  legacy-blocked-subcommand: "&e&lTARAASHMC &8» &cNo such command."
+
+groups:
+  # -------------------------------------------------- every player
+  default:
+    commands:
+      # --- Dreamcore: hub, teleports, chat, info
+      - taraashmc
+      - menu
+      - hub
+      - spawn
+      - warp
+      - warps
+      - tpa
+      - tpahere
+      - tpaccept
+      - tpdeny
+      - tpauto
+      - msg
+      - reply
+      - settings
+      - rules
+      - store
+      - discord
+      - ranks
+      - rankinfo
+      - mediarank
+      - nv
+      - ping
+      - pay
+      - playtime
+      # --- DreamEngine: money, kits
+      - balance
+      - ignore
+      - list
+      - kit
+      - kits
+      # --- economy / shops
+      - shop
+      - sell
+      - settingshop
+      - ah
+      - order
+      - coinshop
+      - coin
+      - orb
+      - orbshop
+      - coinflip
+      - cf
+      - bounty
+      - keys
+      # --- homes, vaults, rtp
+      - home
+      - sethome
+      - delhome
+      - pv
+      - rtp
+      - rtpqueue
+      # --- claims
+      - dreamlandclaim
+      - trust
+      - untrust
+      - containertrust
+      - uncontainertrust
+      - trustlist
+      - unclaim
+      - unclaimall
+      - claimblocks
+      - claimlist
+      # --- teams, koth, spawners
+      - team
+      - teams
+      - koth
+      - ds
+      - spawnertop
+      # --- duels
+      - duel
+      - duelaccept
+      - dueldeny
+      - duelqueue
+      - party
+      - spectate
+      - draw
+      - leave
+      - duels
+      # --- leaderboards, tab
+      - leaderboard
+      - stats
+      - baltop
+      - dreamlb_*
+      - tabsettings
+      - flag
+      # --- reports
+      - report
+    blocked-subcommands: []
+
+  # -------------------------------------------------- staff (dreamwhitelist.group.staff)
+  staff:
+    commands:
+      # --- punishments (Dreamanticheats)
+      - punish
+      - ban
+      - unban
+      - ipban
+      - ipunban
+      - mute
+      - unmute
+      - kick
+      - warn
+      - banlist
+      - mutelist
+      - checkalts
+      - checkdupe
+      - adminreport
+      - dac
+      # --- moderation tools (DreamEngine)
+      - vanish
+      - invsee
+      - endersee
+      - rollback
+      - gamemode
+      - gmc
+      - gms
+      - gmsp
+      - fly
+      # --- moving around
+      - tp
+      - teleport
+      - mvtp
+      - spec
+      # --- claims
+      - ignoreclaim
+      # --- common moderation plugins, if installed
+      - co
+      - coreprotect
+    blocked-subcommands: []
+
+  # More groups: add one here and give its rank  dreamwhitelist.group.<name>
+  # builder:
+  #   commands:
+  #     - gmc
+  #     - "//*"
+  #   blocked-subcommands: []

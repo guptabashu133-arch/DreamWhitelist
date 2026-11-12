@@ -1,0 +1,24 @@
+name: DreamWhitelist
+version: '${project.version}'
+main: org.mydreamduels.dreamwhitelist.DreamWhitelist
+api-version: '1.21'
+author: javacoder99
+description: Command whitelist - players only see and use the commands you allow. Paper, Folia and Spigot.
+folia-supported: true
+softdepend: [LuckPerms]
+commands:
+  dreamwhitelist:
+    description: Manage the command whitelist
+    usage: /dreamwhitelist <reload|add|remove|list|groups|test|dump>
+    aliases: [dwl, cw, commandwhitelist]
+    permission: dreamwhitelist.admin
+permissions:
+  dreamwhitelist.admin:
+    description: /dreamwhitelist (reload, add, remove, list, test, dump)
+    default: op
+  dreamwhitelist.bypass:
+    description: Sees and uses every command, nothing is hidden
+    default: op
+  dreamwhitelist.group.staff:
+    description: The "staff" group's commands (give it to your staff ranks)
+    default: false
