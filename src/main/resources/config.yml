@@ -69,11 +69,15 @@ groups:
       - discord
       - ranks
       - rankinfo
-      - mediarank
+      - back
+      - enderchest
       - nv
       - ping
       - pay
       - playtime
+      # --- DreamEngine screens: Elite Hosting, YouTubers
+      - hosting
+      - yt
       # --- DreamEngine: money, kits
       - balance
       - ignore
@@ -83,6 +87,8 @@ groups:
       # --- economy / shops
       - shop
       - sell
+      - worth
+      - shulkerloader
       - settingshop
       - ah
       - order
@@ -94,6 +100,7 @@ groups:
       - cf
       - bounty
       - keys
+      - crates
       # --- homes, vaults, rtp
       - home
       - sethome
@@ -101,8 +108,13 @@ groups:
       - pv
       - rtp
       - rtpqueue
+      - rtpback
       # --- claims
       - dreamlandclaim
+      - claim
+      - extendclaim
+      - transferclaim
+      - untrustall
       - trust
       - untrust
       - containertrust
