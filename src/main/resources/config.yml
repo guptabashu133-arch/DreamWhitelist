@@ -32,7 +32,7 @@ settings:
   # for commands that really don't exist - for everyone, ops included
   replace-unknown-command: true
   # internal: which set of new default player commands was already added (don't edit)
-  defaults-version: 2
+  defaults-version: 3
 
 messages:
   # Shadow under every message. "#000000" = black, "#00000080" = half see-through, "none" = off
@@ -77,6 +77,7 @@ groups:
       - ping
       - pay
       - playtime
+      - quests
       # --- DreamEngine screens: Elite Hosting, YouTubers
       - hosting
       - yt
