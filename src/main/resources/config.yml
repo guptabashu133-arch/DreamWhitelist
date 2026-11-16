@@ -31,6 +31,8 @@ settings:
   # also show the no-such-command message (instead of Minecraft's red text)
   # for commands that really don't exist - for everyone, ops included
   replace-unknown-command: true
+  # internal: which set of new default player commands was already added (don't edit)
+  defaults-version: 2
 
 messages:
   # Shadow under every message. "#000000" = black, "#00000080" = half see-through, "none" = off

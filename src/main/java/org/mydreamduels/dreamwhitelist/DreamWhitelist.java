@@ -15,6 +15,7 @@ public class DreamWhitelist extends JavaPlugin {
     @Override
     public void onEnable() {
         saveDefaultConfig();
+        addNewPlayerCommands();
         reloadAll();
         getServer().getPluginManager().registerEvents(new CommandListener(this), this);
         PluginCommand cmd = getCommand("dreamwhitelist");
@@ -57,5 +58,29 @@ public class DreamWhitelist extends JavaPlugin {
 
     Messages messages() {
         return messages;
+    }
+
+    /**
+     * Player commands added in newer versions go into an existing config's default group once
+     * (an admin who removes one later keeps it removed: the version number says it was done).
+     */
+    private void addNewPlayerCommands() {
+        var c = getConfig();
+        int done = c.getInt("settings.defaults-version", 0);
+        if (done >= 2 || !c.isConfigurationSection("groups.default")) return;
+        java.util.List<String> list = new java.util.ArrayList<>(c.getStringList("groups.default.commands"));
+        java.util.List<String> added = new java.util.ArrayList<>();
+        for (String cmd : java.util.List.of("back", "enderchest", "hosting", "yt", "worth", "shulkerloader", "crates", "rtpback",
+                "claim", "extendclaim", "transferclaim", "untrustall")) {
+            if (!list.contains(cmd)) {
+                list.add(cmd);
+                added.add(cmd);
+            }
+        }
+        list.remove("mediarank");
+        c.set("groups.default.commands", list);
+        c.set("settings.defaults-version", 2);
+        saveConfig();
+        if (!added.isEmpty()) getLogger().info("Added the new player commands to the default group: " + String.join(", ", added));
     }
 }
