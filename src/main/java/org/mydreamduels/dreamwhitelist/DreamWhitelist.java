@@ -67,11 +67,11 @@ public class DreamWhitelist extends JavaPlugin {
     private void addNewPlayerCommands() {
         var c = getConfig();
         int done = c.getInt("settings.defaults-version", 0);
-        if (done >= 3 || !c.isConfigurationSection("groups.default")) return;
+        if (done >= 4 || !c.isConfigurationSection("groups.default")) return;
         java.util.List<String> list = new java.util.ArrayList<>(c.getStringList("groups.default.commands"));
         java.util.List<String> added = new java.util.ArrayList<>();
         for (String cmd : java.util.List.of("back", "enderchest", "hosting", "yt", "worth", "shulkerloader", "crates", "rtpback",
-                "claim", "extendclaim", "transferclaim", "untrustall", "quests")) {
+                "claim", "extendclaim", "transferclaim", "untrustall", "quests", "lifesteal", "lifestealtop", "hearts", "prestige", "revive")) {
             if (!list.contains(cmd)) {
                 list.add(cmd);
                 added.add(cmd);
@@ -79,7 +79,7 @@ public class DreamWhitelist extends JavaPlugin {
         }
         list.remove("mediarank");
         c.set("groups.default.commands", list);
-        c.set("settings.defaults-version", 3);
+        c.set("settings.defaults-version", 4);
         saveConfig();
         if (!added.isEmpty()) getLogger().info("Added the new player commands to the default group: " + String.join(", ", added));
     }

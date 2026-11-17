@@ -32,7 +32,7 @@ settings:
   # for commands that really don't exist - for everyone, ops included
   replace-unknown-command: true
   # internal: which set of new default player commands was already added (don't edit)
-  defaults-version: 3
+  defaults-version: 4
 
 messages:
   # Shadow under every message. "#000000" = black, "#00000080" = half see-through, "none" = off
@@ -152,6 +152,12 @@ groups:
       - flag
       # --- reports
       - report
+      # --- lifesteal (withdraw / heartpay are off on this server)
+      - lifesteal
+      - lifestealtop
+      - hearts
+      - prestige
+      - revive
     blocked-subcommands: []
 
   # -------------------------------------------------- staff (dreamwhitelist.group.staff)
